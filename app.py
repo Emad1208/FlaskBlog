@@ -8,7 +8,9 @@ app = Flask(__name__)
 def index():
     return 'Home Blog ,'
 
+from mod_admin import admin
 
+app.register_blueprint(admin)
 
 
 if __name__ == '__main__':
