@@ -7,7 +7,7 @@ class User(db.Model):
     id = Column(Integer, primary_key=True)
     email = Column(String(128), nullable= False, unique= True)
     password = Column(String(255), nullable= False, unique= False)
-    roel = Column(Integer(), nullable=False, default= 0)
+    role = Column(Integer(), nullable=False, default= 0)
     full_name = Column(String(32), nullable= True, unique= False)
     phone_number = Column(Integer(),nullable= True, unique= True)
 
@@ -19,6 +19,7 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password, password)   
 
-
+    def is_admin(self):
+        return  self.role == 1
 
 
